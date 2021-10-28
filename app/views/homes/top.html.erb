@@ -1,0 +1,26 @@
+<% flash.each do |key, value| %>
+<p id="<%= key %>"><%= value %></p>
+<% end %>
+ 
+ 
+ <div class="container">
+  <div class="row">
+   <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+     <h1><strong>GUild</strong><i class="fas fa-khanda"></i></h1>
+      <p>We need You need</p>
+      <p>If you want a praiz, We give it. If we need help, You give it.</p>
+       
+       <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+       <p>Member account<i class="far fa-address-card"></i></p>  
+   <%= link_to new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in" do %>Log in<% end %>
+   <!--おぼえておきます。-->
+  </div>
+  <div class="row">
+   <%= link_to new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up" do %>Sign up<% end %>
+   <!--この書き方はＢＯＯＴＳＴＲＡＰを使ったログインコマンド内に文字とリンクを入れる方法。-->
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

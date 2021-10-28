@@ -1,0 +1,39 @@
+<script src="https://kit.fontawesome.com/7b09df32ed.js" crossorigin="anonymous"></script>
+
+  <p id="notice"></p>
+ <div class='container px-5 px-sm-0'>
+      <!--<div class='row'>-->
+      <!--<div class='col-md-3'>-->
+      <h2>User info</h2>
+      <!--%= form_with model:user, local:true do |f| %>-->
+      　　　<table class='table'>
+               <!--<tr>%= attachment_image_tag user, :profile_image, size: "10x10", fallback: "no_image.jpg" %></tr>-->
+              <tr><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></tr>
+              <tr>
+            	     <th>name</th>
+            	     <th><%= user.name %></th>
+               </tr>
+               
+               <tr>
+          	     <th>introduction</th>
+          	     　<!--他のユーザーが変更できないようにする。-->
+          	      <!--% if @user.id == current_user.id %>-->
+          	     <th><%= user.introducion %></th>
+          	      <!--% end %>-->
+               </tr>
+      　　　</table>
+      　　　
+             <%= link_to edit_user_path(user), class:"btn btn-success btn-sm btn-block sign_up" do %> <i class="fas fa-user-cog"></i> <% end %>
+             <h1>依頼の投稿</h1>
+              <!-- form_with部分 -->
+                 <%= form_with model:@book, local:true do |f| %>
+              <h4>題名</h4>
+                 <%= f.text_field :title %>
+              <h4>内容</h4>
+                 <%= f.text_area :body %>
+                 <%= f.submit '依頼する' %>
+                 <% end %>
+           
+              <!--</div>-->
+             <!--</div>-->
+ </div>

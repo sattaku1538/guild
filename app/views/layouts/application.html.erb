@@ -4,12 +4,78 @@
     <title>Guild</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/7b09df32ed.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <div class="container">
+        <a class="navbar-brand" href="/"><span>Guild</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "Home", user_path(current_user.id), class: "fas fa-home" %>
+        <!--Cuurent.idはログインしている-->
+      </li>
+      <li>
+        <!--<i class="fas fa-users"></i>-->
+        <%= link_to "Users", users_path, class:"fas fa-users" %>
+        <!--修正中-->
+      </li>
+      <li>
+        <!--<i class="fas fa-book-open"></i>-->
+        <%= link_to "Request", books_path, class:"fas fa-khanda" %>
+        <!--修正中-->
+      </li>
+      <li>
+        <!--<i class="fas fa-sign-out-alt"></i>-->
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt" %>
+      </li>
+    <% else %>
+      <li>
+        <!--<i class="fas fa-home"></i>-->
+        <%= link_to "Home", root_path, class:"fas fa-home" %>
+      </li>
+      <li>
+        <!--<i class="fas fa-link"></i>-->
+        <%= link_to "About", home_about_path, class:"fas fa-link" %>
+      </li>
+      <li>
+        <!--<i class="fas fa-user-plus"></i>-->
+        <%= link_to "Sign up", new_user_registration_path, class:"fas fa-user-plus" %>
+      </li>
+      <li>
+        <!--<i class="fas fa-sign-in-alt"></i>-->
+        <%= link_to "Log in", new_user_session_path, class:"fas fa-sign-in-alt" %>
+      </li>
+          </ul>
+         </div>
+       </div>
+      </nav>
+    <% end %>
+    </header>
     <%= yield %>
-  </body>
+    
+    <footer>
+      <div class="pull-left">
+      　<div class="container mt-5">
+        　<div class="row">
+          　<div class="mx-auto">
+               <h4>あなたが受ける依頼はなに？</h4><br>
+               <p>～依頼を受けて、報酬と名誉を勝ち取ろう～</p>
+               <p><%= link_to "ギルド入会規約", home_about_path %></p>
+        　　</div>
+          </div>
+      　</div>
+      </div>
+    </footer>
+</body>
 </html>
